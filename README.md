@@ -1,2 +1,2 @@
-# FoodNeuralNetwork
-A Neural Network that can identify if an image is food or not
+# Image Classification Model
+A Convolutional Neural Network trained on CIFAR-10 to make predictions on if an image is a plane, an automobile, a bird, a cat, a deer, a dog, frog, a horse, a ship, or a truck.

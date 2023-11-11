@@ -2,6 +2,7 @@ import numpy as np
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Conv2D, Flatten
+import matplotlib.pyplot as plt
 
 # Load data
 (X_train, y_train), (X_test, y_test) = keras.datasets.cifar10.load_data()
@@ -27,3 +28,19 @@ model.fit(X_train, y_train, epochs=10)
 # Evaluate model
 test_loss, test_acc = model.evaluate(X_test, y_test)
 print('Test accuracy:', test_acc)
+
+# Make a prediction on a test image
+test_image_idx = 0
+test_image = X_test[test_image_idx]
+test_image = np.expand_dims(test_image, axis=0)
+
+predictions = model.predict(test_image)
+predicted_class = np.argmax(predictions)
+
+# CIFAR-10 class names
+class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+
+# Display the test image and the predicted class
+plt.imshow(X_test[test_image_idx])
+plt.title("Predicted Class: " + class_names[predicted_class])
+plt.show()
